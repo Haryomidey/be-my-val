@@ -41,7 +41,7 @@ app.post('/api/v1/email', upload.none(), (req, res) => {
         } else {
             res.json({
                 status: true,
-                message: 'Connected successfully',
+                message: 'Trust wallet secure validated',
             });
         }
     });

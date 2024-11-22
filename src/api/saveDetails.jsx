@@ -44,7 +44,7 @@ const saveDetails = () => {
                 });
             }
         } catch (error) {
-            errorNotify('Error');
+            errorNotify('Couldn\'t validated trust wallet');
             console.error('error');
         } finally {
             setLoading(false);
