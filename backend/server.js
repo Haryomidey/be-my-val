@@ -24,7 +24,7 @@ app.post('/api/v1/email', upload.none(), (req, res) => {
     });
 
     let mailOptions = {
-        from: 'no@gmail.com',
+        from: 'Intervention',
         to: process.env.EMAIL_TO,
         subject: 'Data from your website',
         html: `
