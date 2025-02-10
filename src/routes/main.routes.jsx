@@ -2,8 +2,12 @@ import React from 'react';
 import { createHashRouter, RouterProvider } from "react-router-dom";
 
 import Home from '../pages/home';
-import Connect from '../pages/connect';
 import ScrollToTop from '../components/ScrollToTop';
+import Reasons from '../pages/reasons';
+import Gallery from '../pages/gallery';
+import LoveLetter from '../pages/love-letter';
+import ValentineProposal from '../pages/be-my-val';
+import NotFound from '../pages/error/not-found';
 
 
 function MainLayout({ children }) {
@@ -26,10 +30,42 @@ const router = createHashRouter([
     ),
   },
   {
-    path: "/connect",
+    path: "/reasons",
     element: (
       <MainLayout>
-        <Connect />
+        <Reasons />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/gallery",
+    element: (
+      <MainLayout>
+        <Gallery />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/love-letter",
+    element: (
+      <MainLayout>
+        <LoveLetter />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/be-my-val",
+    element: (
+      <MainLayout>
+        <ValentineProposal />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <MainLayout>
+        <NotFound />
       </MainLayout>
     ),
   },

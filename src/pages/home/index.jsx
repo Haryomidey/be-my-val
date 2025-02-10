@@ -1,31 +1,67 @@
-import React from 'react'
-import HeroImage from '../../assets/images/hero.png';
-import MakeSelection from './MakeSelection';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const floatingIcons = Array.from({ length: 30 }).map((_, i) => ({
+  id: i,
+  x: Math.random() * 100 + "vw",
+  y: Math.random() * 100 + "vh",
+  delay: Math.random() * 5,
+  size: Math.random() * 2 + 1 + "rem",
+  icon: ["❤️", "💖", "🥰", "💞", "💓", "💗", "😍", "😘", "❣️", "💕"][
+    Math.floor(Math.random() * 10)
+  ],
+}));
 
 const Home = () => {
-    return (
-        <div className='w-full bg-[#111827] min-h-screen text-white'>
+  return (
+    <div className="h-screen relative overflow-hidden flex flex-col items-center justify-center bg-gradient-to-b from-red-500 to-pink-500 text-white text-center p-6">
+      {/* Floating Hearts & Love Icons */}
+      {floatingIcons.map(({ id, x, y, delay, size, icon }) => (
+        <motion.span
+          key={id}
+          className="absolute drop-shadow-lg"
+          style={{ left: x, top: y, fontSize: size }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: -50 }}
+          transition={{ duration: 3, repeat: Infinity, delay, ease: "easeInOut" }}
+        >
+          {icon}
+        </motion.span>
+      ))}
 
-            <div className='w-full min-h-[500px] flex flex-wrap items-center justify-center lg:justify-between gap-y-10 pt-28 pb-5 px-5 sm:px-10 md:px-20'>
-                <div className='w-full lg:w-[48%] text-center lg:text-left'>
-                    <h1 className='text-4xl sm:text-[3.6rem] font-semibold sm:leading-[4rem]'>Blockchain <br /> Amendment</h1>
-                    <p className='text-base sm:text-xl mt-3'>
-                        This protocol offers an open and decentralized system for synchronizing multiple wallet platforms securely. It serves as a protocol facilitating remote resolution between all non-custodial wallets.
-                        <br /><br />
-                        Operating as an online server, it connects users with wallet representatives to efficiently address and resolve issues. This interaction occurs solely with an artificial intelligence robot, ensuring no human intervention.
-                    </p>
-                    
-                </div>
-                <div className='w-full lg:w-[48%]'>
-                    <img src={HeroImage} alt="" />
-                </div>
-            </div>
+      <motion.h1
+        className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-300 animate-pulse px-5 sm:px-14 lg:px-20"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        Will You Be My Valentine? ❤️
+      </motion.h1>
+      
+      <motion.p
+        className="text-lg sm:text-xl md:text-2xl italic mb-6 max-w-lg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, delay: 0.5 }}
+      >
+        Every heartbeat, every moment, and every smile is a love letter to you. 💕
+      </motion.p>
 
-            <div className='pt-40 min-h-[500px] px-5 lg:px-16'>
-                <MakeSelection />
-            </div>
-        </div>
-    )
-}
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+      >
+        <Link
+          to="/reasons"
+          className="mt-6 bg-white text-red-600 font-bold text-lg px-8 py-3 rounded-full shadow-lg hover:bg-red-100 transition duration-300 transform hover:scale-105"
+        >
+          See Why I Love You 💌
+        </Link>
+      </motion.div>
+    </div>
+  );
+};
 
-export default Home
+export default Home;
