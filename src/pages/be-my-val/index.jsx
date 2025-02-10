@@ -69,7 +69,7 @@ const ValentineProposal = () => {
               key={i}
               className="absolute"
               style={{
-                left: Math.random() * 100 + "vw",
+                left: Math.random() * 80 - 10 + "vw", // More balanced distribution
                 fontSize: Math.random() * 2 + 1 + "rem",
               }}
               initial={{ top: "-10vh", opacity: 0 }}
